@@ -1,0 +1,30 @@
+開啟學長檔案(first terminal)
+source ~/ros_tutorial_ws/setup.bash
+roslaunch cthung pubStringMsg.launch
+
+測試學長檔案（in second terminal)
+rostopic pub /pub_msg std_msgs/Bool true
+
+測試學長檔案（in second terminal)
+rostopic pub /NAV_LON std_msgs/Float64 23.96
+
+竊聽學長檔案 （in third terminal)
+rostopic echo /cthung_msg
+
+楊少溥的檔案--選我正解（in forth terminal)
+rosrun isaiah dealingStringMsg
+
+ROS專用的make
+catkin_make
+
+這行沒用
+[LON=23.73,LAT=121.15,SPEED=5.62,HEADING=30.52]
+
+
+git checkout <branch_name>
+git pull
+git push
+
+
+
+
