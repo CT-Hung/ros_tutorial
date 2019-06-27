@@ -1,0 +1,2 @@
+cthung:isaiah
+-DCATKIN_DEVEL_PREFIX=/home/isaiah/ros_tutorial_ws/devel -DCMAKE_INSTALL_PREFIX=/home/isaiah/ros_tutorial_ws/install -G Unix Makefiles

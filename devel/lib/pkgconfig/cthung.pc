@@ -1,0 +1,8 @@
+prefix=/home/isaiah/ros_tutorial_ws/devel
+
+Name: cthung
+Description: Description of cthung
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/isaiah/ros_tutorial_ws/devel/lib 
+Requires: 

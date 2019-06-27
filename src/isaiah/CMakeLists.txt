@@ -197,8 +197,8 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-add_executable(pubStringMsg src/pubStringMsg.cpp)
-target_link_libraries(pubStringMsg ${catkin_LIBRARIES})
+#add_executable(pubStringMsg src/pubStringMsg.cpp)
+#target_link_libraries(pubStringMsg ${catkin_LIBRARIES})
 
 add_executable(dealingStringMsg src/dealingStringMsg.cpp)
 target_link_libraries(dealingStringMsg ${catkin_LIBRARIES})
