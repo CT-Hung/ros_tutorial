@@ -12,7 +12,6 @@ double lon = 0 , lat = 0 , speed = 0 , heading = 0;
 
 void callbackfunc(const std_msgs::String::ConstPtr& msg){
     string temp = msg->data.c_str();
-    cout << temp << endl;
     char *tmpc = new char[temp.length()+1];
     strcpy(tmpc, temp.c_str());
     
@@ -21,7 +20,6 @@ void callbackfunc(const std_msgs::String::ConstPtr& msg){
     char *cut = strtok(tmpc,delim);
     
     int i = 0;
-    cout << i << endl; 
     while(cut){
         string a = strstr(cut, "=");
         a.erase(0,1);
@@ -51,16 +49,16 @@ int main (int argc, char **argv){
     std_msgs::Float64 allmsg;
     std_msgs::Bool activate;
     NodeHandle n;
+    
     Publisher lon_pub = n.advertise<std_msgs::Float64>("NAV_LON",1000);
     Publisher lat_pub = n.advertise<std_msgs::Float64>("NAV_LAT",1000);
     Publisher speed_pub = n.advertise<std_msgs::Float64>("NAV_SPEED",1000);
     Publisher heading_pub = n.advertise<std_msgs::Float64>("NAV_HEADING",1000);
-
-    Publisher pub_msg_pub = n.advertise<std_msgs::Bool>("pub_msg",1000);
     activate.data = true;
-    ros::Rate loop_rate(10);
+    Publisher pub_msg_pub = n.advertise<std_msgs::Bool>("pub_msg",1000);
+    Rate loop_rate(10);
     Subscriber sub = n.subscribe("cthung_msg",1000,callbackfunc);
-    while(ros::ok()){
+    while(ok()){
         pub_msg_pub.publish(activate);
         loop_rate.sleep();
         spin();
