@@ -26,5 +26,16 @@ git pull
 git push
 
 
+作業二：解質因數
+去學rosmessage自創格式
+
+
+要自己寫解質數的程式
+調整速率：
+param_createRandomNumber.yaml
+頻率、最大次方、
+
+rostopic echo /pub_prime
+
 
 
