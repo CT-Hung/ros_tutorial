@@ -1,0 +1,6 @@
+<launch>
+    <node name="pubmsg" pkg="weiyu" type="pubmsgs" output="screen" clear_params="true" required="true">
+    </node>
+    <node name="cthung" pkg="cthung" type="pubStringMsg" output="screen" clear_params="true" required="true">
+    </node>
+</launch>
