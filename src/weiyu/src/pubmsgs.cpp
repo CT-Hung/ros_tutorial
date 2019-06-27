@@ -54,14 +54,13 @@ int main (int argc, char **argv){
     Publisher lat_pub = n.advertise<std_msgs::Float64>("NAV_LAT",1000);
     Publisher speed_pub = n.advertise<std_msgs::Float64>("NAV_SPEED",1000);
     Publisher heading_pub = n.advertise<std_msgs::Float64>("NAV_HEADING",1000);
-    activate.data = true;
     Publisher pub_msg_pub = n.advertise<std_msgs::Bool>("pub_msg",1000);
     Rate loop_rate(10);
-    Subscriber sub = n.subscribe("cthung_msg",1000,callbackfunc);
     while(ok()){
+        activate.data = true;
         pub_msg_pub.publish(activate);
-        loop_rate.sleep();
-        spin();
+        
+        Subscriber sub = n.subscribe("cthung_msg",1000,callbackfunc);
         allmsg.data = lon;
         lon_pub.publish(allmsg);
     
@@ -73,5 +72,8 @@ int main (int argc, char **argv){
 
         allmsg.data = heading;
         heading_pub.publish(allmsg);
+        loop_rate.sleep();
+        spin();
+        
     }
 }
