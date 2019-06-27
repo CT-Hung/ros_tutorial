@@ -1,8 +1,0 @@
-prefix=/home/isaiah/ros_tutorial_ws/install
-
-Name: isaiah
-Description: Description of isaiah
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/isaiah/ros_tutorial_ws/install/lib 
-Requires: 
