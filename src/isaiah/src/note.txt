@@ -1,5 +1,5 @@
 開啟學長檔案(first terminal)
-source ~/ros_tutorial_ws/setup.bash
+source ~/ros_tutorial_ws/devel/setup.bash
 roslaunch cthung pubStringMsg.launch
 
 測試學長檔案（in second terminal)
@@ -25,6 +25,20 @@ git checkout <branch_name>
 git pull
 git push
 
+
+作業二：解質因數
+去學rosmessage自創格式
+
+
+要自己寫解質數的程式
+調整速率：
+param_createRandomNumber.yaml
+頻率、最大次方、
+
+rostopic echo /pub_prime
+
+
+用google質因數分解器對答案
 
 
 
