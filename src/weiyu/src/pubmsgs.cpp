@@ -45,7 +45,7 @@ void callbackfunc(const std_msgs::String::ConstPtr& msg){
 }
 
 int main (int argc, char **argv){
-    init(argc,argv,"pubmsgs_node");
+    init(argc,argv,"pubmsgs");
     std_msgs::Float64 allmsg;
     std_msgs::Bool activate;
     NodeHandle n;
@@ -57,11 +57,10 @@ int main (int argc, char **argv){
     activate.data = true;
     Publisher pub_msg_pub = n.advertise<std_msgs::Bool>("pub_msg",1000);
     Rate loop_rate(10);
-    Subscriber sub = n.subscribe("cthung_msg",1000,callbackfunc);
     while(ok()){
         pub_msg_pub.publish(activate);
-        loop_rate.sleep();
-        spin();
+        
+        Subscriber sub = n.subscribe("cthung_msg",1000,callbackfunc);
         allmsg.data = lon;
         lon_pub.publish(allmsg);
     
@@ -73,5 +72,7 @@ int main (int argc, char **argv){
 
         allmsg.data = heading;
         heading_pub.publish(allmsg);
+        loop_rate.sleep();
+        spin();
     }
 }
