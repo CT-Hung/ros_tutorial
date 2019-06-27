@@ -197,5 +197,5 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-add_executable(pubmsgs src/pubmsgs.cpp)
-target_link_libraries(pubmsgs ${catkin_LIBRARIES})
+add_executable(pubmsgsclass src/pubmsgsclass.cpp)
+target_link_libraries(pubmsgsclass ${catkin_LIBRARIES})
