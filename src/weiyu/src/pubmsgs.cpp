@@ -64,8 +64,6 @@ int main (int argc, char **argv){
         pub_msg_pub.publish(activate);
         loop_rate.sleep();
         spin();
-    }
-/*
         allmsg.data = lon;
         lon_pub.publish(allmsg);
     
@@ -77,5 +75,5 @@ int main (int argc, char **argv){
 
         allmsg.data = heading;
         heading_pub.publish(allmsg);
-*/
+    }
 }
