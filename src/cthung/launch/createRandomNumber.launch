@@ -1,0 +1,11 @@
+<launch>
+    <!-- Setup file -->
+    <arg name="param_random_file" default="param_createRandomNumber"/>
+
+    <!-- Node --> 
+    <node name="createRandomNumber" pkg="cthung" type="createRandomNumber.py" output="screen" clear_params="true" required="true">
+        <rosparam command="load" file="$(find cthung)/config/$(arg param_random_file).yaml" />
+    </node>
+
+</launch>
+
