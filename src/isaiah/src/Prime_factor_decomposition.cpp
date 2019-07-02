@@ -14,7 +14,7 @@ int main(){
     vector<int> ans;
     
     
-    ans = prime_factor_decomposition(13801);
+    ans = prime_factor_decomposition(8978);
 
     
     for(int i=0; i<ans.size(); i++){

@@ -40,5 +40,9 @@ rostopic echo /pub_prime
 
 用google質因數分解器對答案
 
+開啟檔案
+roslaunch cthung createRandomNumber.launch
+roslaunch cthung primeFactor.launch
+
 
 
