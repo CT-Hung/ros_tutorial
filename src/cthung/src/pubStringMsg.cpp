@@ -10,7 +10,7 @@
 /*  Constructor  */
 pubStringMsg::pubStringMsg()
 {
-    m_loopFreq = 4;
+    m_loopFreq = 1;
     m_lon = 23.5;
     m_lat = 121.34;
     m_speed = 5.5;
@@ -46,13 +46,16 @@ void pubStringMsg::SubscribedSetting()
     sub_lat = m_nh.subscribe("NAV_LAT", 1000, &pubStringMsg::lat_callback, this);
     sub_speed = m_nh.subscribe("NAV_SPEED", 1000, &pubStringMsg::speed_callback, this);
     sub_heading = m_nh.subscribe("NAV_HEADING", 1000, &pubStringMsg::heading_callback, this);
+    cout << "----------------------------"<<endl;
 }
 
 /* Set the callback function of subscriber. */
 void pubStringMsg::start_callback(const std_msgs::Bool::ConstPtr& msg)
 {
-    if (msg->data == true)
+    if(msg->data == true)
+    {
         m_start = true;
+    }
 }
 
 void pubStringMsg::lon_callback(const std_msgs::Float64::ConstPtr& msg)
@@ -62,7 +65,7 @@ void pubStringMsg::lon_callback(const std_msgs::Float64::ConstPtr& msg)
     if(tmp == m_lon)
         cout << "LON is correct." << endl;
     else
-        cout << "LON is not correct." << endl;
+        cout << "LON is not correct."  << tmp <<"!="<< m_lon << endl;
 }
 
 void pubStringMsg::lat_callback(const std_msgs::Float64::ConstPtr& msg)
@@ -72,7 +75,7 @@ void pubStringMsg::lat_callback(const std_msgs::Float64::ConstPtr& msg)
     if(tmp == m_lat)
         cout << "LAT is correct." << endl;
     else
-        cout << "LAT is not correct." << endl;
+        cout << "LAT is not correct." << tmp <<"!="<< m_lat << endl;
 }
 void pubStringMsg::speed_callback(const std_msgs::Float64::ConstPtr& msg)
 {
@@ -81,7 +84,7 @@ void pubStringMsg::speed_callback(const std_msgs::Float64::ConstPtr& msg)
     if(tmp == m_speed)
         cout << "SPEED is correct." << endl;
     else
-        cout << "SPEED is not correct." << endl;
+        cout << "SPEED is not correct."  << tmp <<"!="<< m_speed << endl;
 }
 void pubStringMsg::heading_callback(const std_msgs::Float64::ConstPtr& msg)
 {
@@ -90,12 +93,14 @@ void pubStringMsg::heading_callback(const std_msgs::Float64::ConstPtr& msg)
     if(tmp == m_heading)
         cout << "HEADING is correct." << endl;
     else
-        cout << "HEADING is not correct." << endl;
+        cout << "HEADING is not correct." << tmp <<"!="<< m_heading << endl;
+
+    cout << "-----------------------------" <<endl;
 }
 /* Loop setting. Do your main thing here. */
 void pubStringMsg::Iterate(const ros::TimerEvent&)
 {
-    if (m_start == true)
+    if(true)
     {
         stringstream msg;
         std_msgs::String finalMsg;
@@ -103,14 +108,15 @@ void pubStringMsg::Iterate(const ros::TimerEvent&)
         m_lat -= 0.19;
         m_speed += 0.12;
         m_heading += 0.32;
+        m_start = false;
         msg << "LON=" << m_lon;
         msg << ",LAT=" << m_lat;
         msg << ",SPEED=" << m_speed;
         msg << ",HEADING=" << m_heading;
-        m_start = false;
         finalMsg.data = msg.str();
         pub_msg.publish(finalMsg);
     }
+
 }
 
 /* main function */ 
@@ -125,6 +131,7 @@ int main (int argc, char** argv)
     pubStringMsg_obj.OnStartUp();
     pubStringMsg_obj.PublishedSetting();
     pubStringMsg_obj.SubscribedSetting();
+    cout << "-------------------------------"<<endl;
     pubStringMsg_obj.timer = pubStringMsg_obj.m_nh.createTimer(ros::Duration(pubStringMsg_obj.m_loopFreq), &pubStringMsg::Iterate, &pubStringMsg_obj);
     ros::spin();
 
