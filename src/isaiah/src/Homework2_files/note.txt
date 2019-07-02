@@ -44,10 +44,5 @@ rostopic echo /pub_prime
 roslaunch cthung createRandomNumber.launch
 roslaunch cthung primeFactor.launch
 
-竊聽學檔案
-rostopic echo /number_msg
-
-楊少溥的檔案
-rosrun isaiah ROS_Prime_factor_decomposition
 
 

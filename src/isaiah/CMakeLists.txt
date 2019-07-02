@@ -204,3 +204,6 @@ add_executable(dealingStringMsg src/dealingStringMsg.cpp)
 target_link_libraries(dealingStringMsg ${catkin_LIBRARIES})
 # don't know what is this
 # add_dependencies(dealingStringMsg beginner_tutorials_generate_messages_cpp)
+
+add_executable(ROS_Prime_factor_decomposition src/ROS_Prime_factor_decomposition.cpp)
+target_link_libraries(ROS_Prime_factor_decomposition ${catkin_LIBRARIES})
